@@ -375,8 +375,8 @@ or
 
     val stop: Action[AnyContent] = 
         actions
-            .waitForStateAndRedirect[State.continue](30) //seconds
-            .orApply(Transitions.forceContinue)       
+            .waitForStateThenRedirect[State.continue](30) //seconds
+            .orApplyOnTimeout(Transitions.forceContinue)       
 ```
 
 - use custom error recovery strategy
